@@ -92,6 +92,6 @@ class CarMovementServiceTest extends NsTest {
 
     @Override
     public void runMain() {
-        // 테스트용 메인 메서드 - 사용하지 않음
+        racingcar.Application.main(new String[]{});
     }
 }

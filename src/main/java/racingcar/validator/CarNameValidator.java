@@ -11,7 +11,7 @@ public class CarNameValidator {
         validateInputNotEmpty(input);
         List<String> carNames = splitCarNames(input);
         validateCarNames(carNames);
-        return carNames;
+        return trimCarNames(carNames);
     }
 
     private void validateInputNotEmpty(String input) {
@@ -34,6 +34,12 @@ public class CarNameValidator {
         String trimmedName = carName.trim();
         validateNameNotEmpty(trimmedName);
         validateNameLength(trimmedName);
+    }
+
+    private List<String> trimCarNames(List<String> carNames) {
+        return carNames.stream()
+                .map(String::trim)
+                .toList();
     }
 
     private void validateNameNotEmpty(String carName) {
