@@ -76,6 +76,45 @@ class OutputViewTest extends NsTest {
         assertThat(output()).contains("pobi : -----", "");
     }
 
+    @Test
+    @DisplayName("단독 우승자를 출력한다")
+    void printSingleWinner() {
+        // given
+        List<String> winners = Arrays.asList("pobi");
+
+        // when
+        outputView.printWinners(winners);
+
+        // then
+        assertThat(output()).contains("최종 우승자 : pobi");
+    }
+
+    @Test
+    @DisplayName("공동 우승자를 출력한다")
+    void printMultipleWinners() {
+        // given
+        List<String> winners = Arrays.asList("pobi", "jun");
+
+        // when
+        outputView.printWinners(winners);
+
+        // then
+        assertThat(output()).contains("최종 우승자 : pobi, jun");
+    }
+
+    @Test
+    @DisplayName("여러 명의 공동 우승자를 출력한다")
+    void printManyWinners() {
+        // given
+        List<String> winners = Arrays.asList("pobi", "woni", "jun");
+
+        // when
+        outputView.printWinners(winners);
+
+        // then
+        assertThat(output()).contains("최종 우승자 : pobi, woni, jun");
+    }
+
     @Override
     public void runMain() {
         // 테스트용 메인 메서드 - 사용하지 않음
